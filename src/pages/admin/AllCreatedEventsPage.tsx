@@ -3,12 +3,10 @@ import api from "../../api/axios";
 import { toast } from "react-hot-toast";
 import EventCard from "../../components/events/EventCard";
 import type { Event } from "../../types/events.types";
-import { useAuth } from "../../context/useAuth";
 
 const AllCreatedEventsPage: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { user } = useAuth();
 
   const fetchMyEvents = async () => {
     try {
@@ -61,7 +59,6 @@ const AllCreatedEventsPage: React.FC = () => {
               <EventCard
                 key={event._id}
                 event={event}
-                userRole={user?.role || "admin"}
                 onDeleteSuccess={handleDeleteSuccess}
               />
             ))}
