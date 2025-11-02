@@ -50,7 +50,7 @@ const AdminDashboard: React.FC = () => {
         {/* Events Card */}
         <div className="bg-white rounded-lg p-6 shadow-md flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-semibold">Events Conducted</h2>
+            <h2 className="text-xl font-semibold">Events</h2>
             <p className="text-3xl font-bold mt-4">
               {loading ? "..." : eventCount}
             </p>
@@ -66,7 +66,7 @@ const AdminDashboard: React.FC = () => {
         {/* Posts Card */}
         <div className="bg-white rounded-lg p-6 shadow-md flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-semibold">Posts Created</h2>
+            <h2 className="text-xl font-semibold">Posts</h2>
             <p className="text-3xl font-bold mt-4">
               {loading ? "..." : postCount}
             </p>
