@@ -11,19 +11,16 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import api from "../../api/axios";
 import type { Event } from "../../types/events.types";
+import { useAuth } from "../../context/useAuth";
 import ConfirmationModal from "../common/ConfirmationModal";
 
 interface EventCardProps {
   event: Event;
-  userRole: "admin" | "student";
   onDeleteSuccess?: () => void; // Callback to refresh parent list after delete
 }
 
-const EventCard: React.FC<EventCardProps> = ({
-  event,
-  userRole,
-  onDeleteSuccess,
-}) => {
+const EventCard: React.FC<EventCardProps> = ({ event, onDeleteSuccess }) => {
+  const { user } = useAuth();
   const placeholderImage =
     "https://via.placeholder.com/600x400.png?text=Event+Image";
 
@@ -116,7 +113,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-2 mt-auto">
-            {userRole === "student" && (
+            {user?.role === "student" && (
               <Link
                 to={`/events/${event._id}`}
                 className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition-colors"
@@ -125,7 +122,7 @@ const EventCard: React.FC<EventCardProps> = ({
               </Link>
             )}
 
-            {userRole === "admin" && (
+            {user?.role === "admin" && (
               <>
                 <Link
                   to={`/admin/events/edit/${event._id}`}
