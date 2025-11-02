@@ -76,7 +76,7 @@ const PostDetailPage: React.FC = () => {
           {post.event && (
             <div className="mt-2 sm:mt-0">
               <span className="font-medium">Related Event:</span>{" "}
-              <p className="text-indigo-600 dark:text-indigo-400 hover:underline">
+              <p className="text-gray-600 dark:text-gray-300">
                 {post.event.title} -{" "}
                 {new Date(post.event.eventDate).toLocaleDateString()}
               </p>
